@@ -1,37 +1,40 @@
 //
 //  OFTabBarController.swift
-//  
+//
 //
 //  Created by elonfreedom on 2024/8/22.
 //
 
 import UIKit
 
-public class OFTabBarController: UITabBarController {
+public protocol NavigationControllerProtocol: UINavigationController { }
 
-    public override func viewDidLoad() {
+open class OFTabBarController: UITabBarController {
+
+    open override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    public func setChildViewController(_ childController: UIViewController,
+    open func setChildViewController(_ childController: UIViewController,
         title: String,
         imageName: String,
-        selectedImageName: String) {
+        selectedImageName: String,
+        navigationControllerType: UINavigationController.Type = OFNavigationController.self) {
         let item = UITabBarItem.init(title: title, image: UIImage(systemName: imageName), selectedImage: UIImage(systemName: imageName))
         childController.tabBarItem = item
-        let navVc = OFNavigationController(rootViewController: childController)
+        let navVc = navigationControllerType.init(rootViewController: childController)
         addChild(navVc)
     }
 
     /// 预加载所有子视图控制器的 view
-    public func preloadAllViewControllers() {
+    open func preloadAllViewControllers() {
         guard let viewControllers = self.viewControllers else { return }
         for viewController in viewControllers {
             let _ = viewController.view
         }
     }
 
-    public func setTabBar() {
+    open func setTabBar() {
         /// controller.view 背景色
         view.backgroundColor = .white
         /// TabBar中选中状态下的图标和文本颜色
@@ -46,7 +49,7 @@ public class OFTabBarController: UITabBarController {
 //        self.delegate = self
     }
 
-    public func hiddenBarTopLine(to hidden: Bool) {
+    open func hiddenBarTopLine(to hidden: Bool) {
         let clearImage = hidden ? UIImage() : nil
         tabBar.backgroundImage = clearImage
         tabBar.shadowImage = clearImage

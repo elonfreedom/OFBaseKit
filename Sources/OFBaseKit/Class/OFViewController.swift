@@ -1,15 +1,15 @@
 //
 //  OFViewController.swift
-//  
+//
 //
 //  Created by elonfreedom on 2024/8/22.
 //
 
 import UIKit
 
-public class OFViewController: UIViewController {
+open class OFViewController: UIViewController {
 
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         setupNav()
         setupUI()
@@ -18,25 +18,25 @@ public class OFViewController: UIViewController {
         setNotification()
     }
 
-    public func setupNav() {
+    open func setupNav() {
         navigationItem.title = navTitle()
     }
 
-    public func navTitle() -> String {
+    open func navTitle() -> String {
         return "title"
     }
 
-    public func setupUI() { }
+    open func setupUI() { }
 
-    public func initData() { }
+    open func initData() { }
 
-    public func fetchData() { }
+    open func fetchData() { }
 
-    public func setNotification() { }
+    open func setNotification() { }
 }
 
 public extension UIResponder {
-    func findViewController() -> UIViewController? {
+    public func findViewController() -> UIViewController? {
         var nextResponder: UIResponder? = self
         while nextResponder != nil {
             nextResponder = nextResponder?.next

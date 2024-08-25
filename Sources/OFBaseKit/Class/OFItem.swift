@@ -7,22 +7,22 @@
 
 import UIKit
 
-class OFItem: UICollectionViewCell {
+open class OFItem: UICollectionViewCell {
 
-    var model: Any?
+    open var model: Any?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupItemUI()
     }
 
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupItemUI()
     }
 
-    func setupItemUI() { }
+    open func setupItemUI() { }
 
-    func setContent(_ model: Any) { }
+    open func setContent(_ model: Any) { }
 
 }

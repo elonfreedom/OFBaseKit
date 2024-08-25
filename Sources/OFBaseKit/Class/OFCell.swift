@@ -7,23 +7,23 @@
 
 import UIKit
 
-class OFCell: UITableViewCell {
+open class OFCell: UITableViewCell {
 
-    var model: Any?
-    
-    override func awakeFromNib() {
+    open var model: Any?
+
+    open override func awakeFromNib() {
         super.awakeFromNib()
     }
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
         contentView.backgroundColor = .clear
         backgroundColor = .clear
         setupCellUI()
     }
-
-    required init?(coder: NSCoder) {
+    
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         selectionStyle = .none
         contentView.backgroundColor = .clear
@@ -31,11 +31,11 @@ class OFCell: UITableViewCell {
         setupCellUI()
     }
 
-    func setupCellUI() { }
+    open func setupCellUI() { }
 
-    func setContent(_ anyModel: Any) { model = anyModel }
+    open func setContent(_ anyModel: Any) { model = anyModel }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    open override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
     }

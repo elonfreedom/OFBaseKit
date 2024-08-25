@@ -7,9 +7,9 @@
 
 import UIKit
 
-public class OFView: UIView {
+open class OFView: UIView {
     
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
     }
@@ -19,8 +19,8 @@ public class OFView: UIView {
         setupUI()
     }
     
-    public func setupUI() {}
+    open func setupUI() {}
     
-    public func setContent(_ content: Any) {}
+    open func setContent(_ content: Any) {}
 
 }

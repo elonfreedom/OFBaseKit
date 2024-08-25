@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class OFLabel: UILabel, UIPopoverPresentationControllerDelegate {
+open class OFLabel: UILabel, UIPopoverPresentationControllerDelegate {
 
     public var insets: UIEdgeInsets = .zero {
         didSet {
@@ -17,16 +17,16 @@ public class OFLabel: UILabel, UIPopoverPresentationControllerDelegate {
         }
     }
 
-    public var maxWidth: CGFloat = CGFloat.greatestFiniteMagnitude { //CGFloat.greatestFiniteMagnitude {
+    open var maxWidth: CGFloat = CGFloat.greatestFiniteMagnitude { //CGFloat.greatestFiniteMagnitude {
         didSet {
             setNeedsDisplay()
             invalidateIntrinsicContentSize()
         }
     }
 
-    public var longPressEnable: Bool = false
+    open var longPressEnable: Bool = false
 
-    private var isTextTruncated: Bool {
+    open var isTextTruncated: Bool {
         guard let text = self.text else { return false }
         let constrainedWidth = maxWidth - insets.left - insets.right
         let size = (text as NSString).boundingRect(
@@ -58,19 +58,19 @@ public class OFLabel: UILabel, UIPopoverPresentationControllerDelegate {
         return CGSize(width: width, height: size.height + insets.top + insets.bottom)
     }
 
-    private func setupLongPressGesture() {
+    public func setupLongPressGesture() {
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         self.addGestureRecognizer(longPressGesture)
         self.isUserInteractionEnabled = true
     }
 
-    @objc private func handleLongPress() {
+    @objc open func handleLongPress() {
         if isTextTruncated, longPressEnable {
             showFullText()
         }
     }
 
-    private func showFullText() {
+    public func showFullText() {
         guard let parentViewController = self.findViewController() else { return }
 
         let popoverContent = UIViewController()
